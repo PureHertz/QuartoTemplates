@@ -1,0 +1,243 @@
+<ns0:style xmlns:ns0="http://purl.org/net/xbiblio/csl" class="in-text" version="1.0" demote-non-dropping-particle="sort-only" default-locale="en-US">
+  <ns0:info>
+    <ns0:title>The Optical Society</ns0:title>
+    <ns0:title-short>OSA</ns0:title-short>
+    <ns0:id>http://www.zotero.org/styles/the-optical-society</ns0:id>
+    <ns0:link href="http://www.zotero.org/styles/the-optical-society" rel="self" />
+    <ns0:link href="http://www.zotero.org/styles/ieee" rel="template" />
+    <ns0:link href="http://www.zotero.org/styles/american-physics-society" rel="template" />
+    <ns0:link href="http://www.opticsinfobase.org/author/author.cfm" rel="documentation" />
+    <ns0:author>
+      <ns0:name>Barbara Williams</ns0:name>
+      <ns0:email>bwilli@osa.org</ns0:email>
+    </ns0:author>
+    <ns0:category citation-format="numeric" />
+    <ns0:category field="physics" />
+    <ns0:summary>Common style use by OSA publications.</ns0:summary>
+    <ns0:updated>2015-01-17T11:30:12+00:00</ns0:updated>
+    <ns0:rights license="http://creativecommons.org/licenses/by-sa/3.0/">This work is licensed under a Creative Commons Attribution-ShareAlike 3.0 License</ns0:rights>
+  </ns0:info>
+  <ns0:macro name="author">
+    <ns0:names variable="author">
+      <ns0:name initialize-with=". " delimiter=", " and="text" />
+      <ns0:label form="short" prefix=", " />
+      <ns0:substitute>
+        <ns0:names variable="editor" />
+        <ns0:names variable="translator" />
+      </ns0:substitute>
+    </ns0:names>
+  </ns0:macro>
+  <ns0:macro name="editor">
+    <ns0:names variable="editor">
+      <ns0:name initialize-with=". " delimiter=", " and="text" />
+      <ns0:label form="short" prefix=", " />
+    </ns0:names>
+  </ns0:macro>
+  <ns0:macro name="year-date">
+    <ns0:choose>
+      <ns0:if variable="issued">
+        <ns0:date variable="issued">
+          <ns0:date-part name="year" />
+        </ns0:date>
+      </ns0:if>
+      <ns0:else>
+        <ns0:text term="no date" form="short" />
+      </ns0:else>
+    </ns0:choose>
+  </ns0:macro>
+  <ns0:macro name="day-date">
+    <ns0:choose>
+      <ns0:if variable="issued">
+        <ns0:date variable="issued">
+          <ns0:date-part name="month" form="long" suffix=" " />
+          <ns0:date-part name="day" suffix=", " />
+          <ns0:date-part name="year" />
+        </ns0:date>
+      </ns0:if>
+      <ns0:else>
+        <ns0:text term="no date" form="short" />
+      </ns0:else>
+    </ns0:choose>
+  </ns0:macro>
+  <ns0:macro name="publisher">
+    <ns0:group prefix="(" suffix=")" delimiter=", ">
+      <ns0:text variable="publisher" />
+      <ns0:text macro="year-date" />
+    </ns0:group>
+  </ns0:macro>
+  <ns0:macro name="volume">
+    <ns0:text variable="volume" prefix="Vol. " />
+  </ns0:macro>
+  <ns0:macro name="edition">
+    <ns0:choose>
+      <ns0:if is-numeric="edition">
+        <ns0:group delimiter=" ">
+          <ns0:number variable="edition" form="ordinal" />
+          <ns0:text term="edition" form="short" />
+        </ns0:group>
+      </ns0:if>
+      <ns0:else>
+        <ns0:text variable="edition" />
+      </ns0:else>
+    </ns0:choose>
+  </ns0:macro>
+  <ns0:macro name="series">
+    <ns0:group delimiter=" ">
+      <ns0:text variable="collection-title" text-case="title" />
+      <ns0:text variable="collection-number" prefix="No. " />
+    </ns0:group>
+  </ns0:macro>
+  <ns0:macro name="personal-communication">
+    <ns0:group prefix="personal communication (" suffix=")">
+      <ns0:text macro="day-date" />
+    </ns0:group>
+  </ns0:macro>
+  <ns0:macro name="patent-authority-number">
+    <ns0:choose>
+      <ns0:if variable="authority">
+        <ns0:group>
+          <ns0:text variable="authority" suffix=" patent " />
+          <ns0:text variable="number" />
+        </ns0:group>
+      </ns0:if>
+      <ns0:else>
+        <ns0:group>
+          <ns0:text variable="number" prefix="U.S. patent " />
+        </ns0:group>
+      </ns0:else>
+    </ns0:choose>
+  </ns0:macro>
+  
+  <ns0:citation collapse="citation-number">
+    <ns0:sort>
+      <ns0:key variable="citation-number" />
+    </ns0:sort>
+    <ns0:layout delimiter="," prefix=" [" suffix="]">
+      <ns0:text variable="citation-number" />
+    </ns0:layout>
+  </ns0:citation>
+  
+  <ns0:bibliography entry-spacing="0" second-field-align="flush">
+    <ns0:layout suffix=".">
+      <ns0:text variable="citation-number" prefix="[" suffix="] " />
+      <ns0:text macro="author" suffix=", " />
+      <ns0:choose>
+        <ns0:if type="bill book graphic legal_case legislation motion_picture report song" match="any">
+          <ns0:group delimiter=" ">
+            <ns0:group delimiter=", ">
+              <ns0:text variable="title" text-case="title" font-style="italic" />
+              <ns0:text macro="edition" />
+              <ns0:text macro="series" />
+            </ns0:group>
+            <ns0:group delimiter=", ">
+              <ns0:text macro="publisher" />
+              <ns0:text macro="volume" />
+              <ns0:group delimiter=" ">
+                <ns0:label variable="page" form="short" />
+                <ns0:text variable="page" />
+              </ns0:group>
+            </ns0:group>
+          </ns0:group>
+        </ns0:if>
+        <ns0:else-if type="paper-conference">
+          
+          <ns0:group delimiter=" ">
+            <ns0:text variable="title" prefix="&quot;" suffix=",&quot; " />
+            <ns0:text term="in" />
+            <ns0:group delimiter=", ">
+              <ns0:text variable="container-title" form="long" text-case="title" font-style="italic" />
+              <ns0:text macro="editor" />
+              <ns0:text macro="series" />
+            </ns0:group>
+            <ns0:group delimiter=", ">
+              <ns0:text macro="publisher" />
+              <ns0:text macro="volume" />
+              <ns0:group delimiter=" ">
+                <ns0:label variable="page" form="short" />
+                <ns0:text variable="page" />
+              </ns0:group>
+            </ns0:group>
+          </ns0:group>
+        </ns0:else-if>
+        <ns0:else-if type="speech">
+          <ns0:text variable="title" prefix="&quot;" suffix=",&quot;" />
+          <ns0:group delimiter=", ">
+            <ns0:text variable="event" form="long" text-case="title" prefix=" presented at " />
+            <ns0:text variable="event-place" text-case="title" />
+          </ns0:group>
+          <ns0:text macro="day-date" prefix=" (" suffix=")" />
+        </ns0:else-if>
+        <ns0:else-if type="chapter paper-conference" match="any">
+          <ns0:group delimiter=" ">
+            <ns0:text variable="title" prefix="&quot;" suffix=",&quot;" />
+            <ns0:text term="in" />
+            <ns0:group delimiter=", ">
+              <ns0:text variable="container-title" form="long" text-case="title" font-style="italic" />
+              <ns0:text macro="editor" />
+              <ns0:text macro="edition" />
+              <ns0:text macro="series" />
+            </ns0:group>
+            <ns0:group delimiter=", ">
+              <ns0:text macro="publisher" />
+              <ns0:text macro="volume" />
+              <ns0:group delimiter=" ">
+                <ns0:label variable="page" form="short" />
+                <ns0:text variable="page" />
+              </ns0:group>
+            </ns0:group>
+          </ns0:group>
+        </ns0:else-if>
+        <ns0:else-if type="patent">
+          <ns0:text variable="title" prefix="&quot;" suffix=",&quot; " />
+          <ns0:group delimiter=" ">
+            <ns0:text macro="patent-authority-number" />
+            <ns0:text macro="day-date" prefix=" (" suffix=")" />
+          </ns0:group>
+        </ns0:else-if>
+        <ns0:else-if type="thesis">
+          <ns0:text variable="title" prefix="&quot;" suffix=",&quot; " />
+          <ns0:group delimiter=", ">
+            <ns0:text variable="genre" />
+            <ns0:text variable="publisher" />
+          </ns0:group>
+          <ns0:text macro="year-date" prefix=" (" suffix=")" />
+        </ns0:else-if>
+        <ns0:else-if type="webpage">
+          <ns0:text variable="title" prefix="&quot;" suffix=",&quot; " />
+          <ns0:text variable="URL" />
+        </ns0:else-if>
+        <ns0:else-if type="personal_communication">
+          <ns0:text macro="personal-communication" />
+        </ns0:else-if>
+        <ns0:else-if type="article-newspaper">
+          <ns0:text variable="title" prefix="&quot;" suffix=",&quot; " />
+          <ns0:text variable="container-title" form="long" />
+          <ns0:text macro="day-date" prefix=" (" suffix=")" />
+        </ns0:else-if>
+        <ns0:else-if type="report">
+          <ns0:group delimiter=" ">
+            <ns0:text variable="title" prefix="&quot;" suffix=",&quot;" />
+            <ns0:text variable="genre" />
+            <ns0:text variable="number" />
+            <ns0:text variable="publisher" prefix="(" />
+            <ns0:text macro="day-date" prefix=", " suffix=")," />
+            <ns0:text variable="URL" />
+          </ns0:group>
+        </ns0:else-if>
+        <ns0:else>
+          <ns0:group delimiter=" ">
+            <ns0:text variable="title" prefix="&quot;" suffix=",&quot;" />
+            <ns0:text variable="container-title" form="short" />
+            <ns0:group delimiter=", ">
+              <ns0:text variable="volume" font-weight="bold" />
+              <ns0:group delimiter=" ">
+                <ns0:text variable="page" form="short" />
+                <ns0:text macro="year-date" prefix="(" suffix=")" />
+              </ns0:group>
+            </ns0:group>
+          </ns0:group>
+        </ns0:else>
+      </ns0:choose>
+    </ns0:layout>
+  </ns0:bibliography>
+<locale xml:lang="ja-JP"><terms><term name="and">and</term><term name="and" form="symbol">&amp;</term></terms></locale></ns0:style>

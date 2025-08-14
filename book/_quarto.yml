@@ -1,0 +1,67 @@
+# Quarto技術書用YAMLヘッダー
+#
+# 備考:
+#   Markdownファイル側のYAMLヘッダー:
+#     - title  # 必須
+#     - subtitle  # 不要
+#     - author  # 不要
+#     - date  # 不要
+#     - bibliography  # 参考文献がある場合
+# 更新履歴:
+#   20250814:
+#     - 最初のバージョン
+
+
+publisher: PureHertz
+date: today
+year: 2025
+edition: 1
+
+project:
+  type: book
+
+book:
+  title: Quarto Template
+  subtitle: "技術書用"  # サブタイトルがない場合は半角スペースを入れる
+  author: PureHertz
+  output-file: quarto_template_book  # 出力ファイル名
+  chapters:  # 各章のMarkdownファイル
+    - index.qmd
+    - quarto_template_1.md
+    - quarto_template_2.md
+    - postface.qmd
+    - references.qmd
+
+bibliography:  # bibtexファイル
+  - quarto_template_1_assets/references.bib
+  - quarto_template_2_assets/references.bib
+
+format:
+  pdf:
+    pdf-engine: lualatex
+    documentclass: bxjsreport
+    classoption: [lualatex, ja=standard, 10pt, a4paper]
+    # cite-method: biblatex
+    pagestyle: headings
+    number-sections: true  # 見出しに番号を付ける
+    number-depth: 2  # subsectionまで見出し番号を付ける
+    include-in-header:
+      - file: _preamble_book.tex  # プリアンブルの設定
+    toc: true  # 目次を生成
+    toc-depth: 2  # 目次の深さ（sectionまで）
+    toc-title: 目次  # 目次のタイトル
+    highlight-style: tango  # コードブロックのシンタックスハイライトのスタイル
+    # keep-tex: true  # デバッグ用に.texファイルを残す
+
+crossref:
+  fig-title: "図"   # (default is "Figure")
+  tbl-title: "表"   # (default is "Table")
+  fig-prefix: "図"  # (default is "Figure")
+  tbl-prefix: "表"  # (default is "Table")
+  eq-prefix: ""
+  chapters: true  # 章番号付の番号にする場合はtrue
+
+lang: ja
+date-format: "YYYY年M月D日"
+csl: the-optical-society-mod.csl  # 参考文献スタイルファイル
+link-citations: true

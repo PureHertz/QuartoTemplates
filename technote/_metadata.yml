@@ -1,0 +1,63 @@
+# Quarto技術資料用YAMLヘッダー
+#
+# 備考:
+#   Markdownファイル側のYAMLヘッダー:
+#     - title  # 必須
+#     - subtitle
+#     - author
+#     - date  # today以外の日付にしたいとき
+#     - bibliography:  # 参考文献があるとき
+# 更新履歴:
+#   20250814:
+#     - 参考文献を設定
+#   20250812:
+#     - hilight-styleを設定
+#   20250811:
+#     - 最初のバージョン
+#     - PDFとHTMLに対応
+
+lang: ja
+date: today
+date-format: iso
+
+format:
+  html:  # プレビュー用
+    toc: true  # 目次を生成
+    toc-depth: 3  # 目次の深さ
+    toc-title: "On this page"  # 目次のタイトル
+    number-depth: 3
+    html-math-method: katex
+    theme: darkly
+    toc-expand: true  # 目次を展開して表示
+
+
+  pdf:
+    pdf-engine: lualatex
+    documentclass: bxjsarticle
+    classoption: [lualatex, ja=standard, 11pt, a4paper]
+    # cite-method: biblatex
+    pagestyle: headings   # フッターに何も表示せずに、ヘッダーにタイトルとページ番号を表示
+    number-sections: true  # 見出しに番号を付ける
+    number-depth: 2  # subsectionまで見出し番号を付ける
+    include-in-header:
+      - file: _preamble_technote.tex  # プリアンブルの設定
+    include-before-body:
+      - text: \thispagestyle{empty}  # 最初のページでページ番号を表示しない
+    shift-heading-level-by: -1  # 見出しレベルをLaTeX用に調整（Quartoでは#がSectionになる）
+    toc: true  # 目次を生成
+    toc-depth: 2  # 目次の深さ（subsectionまで）
+    toc-title: Contents  # 目次のタイトル
+    highlight-style: tango  # コードブロックのシンタックスハイライトのスタイル
+    # keep-tex: true  # デバッグ用に.texファイルを残す
+
+
+crossref:
+  fig-title: "図"   # (default is "Figure")
+  tbl-title: "表"   # (default is "Table")
+  fig-prefix: "図"  # (default is "Figure")
+  tbl-prefix: "表"  # (default is "Table")
+  eq-prefix: ""
+  chapters: false  # 章番号付の番号にする場合はtrue
+
+csl: the-optical-society-mod.csl  # 参考文献スタイルファイル
+link-citations: true

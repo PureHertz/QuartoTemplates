@@ -1,0 +1,217 @@
+% Quarto技術資料用LaTeXプリアンブル
+%
+% 備考:
+%   Markdownファイル用YAMLヘッダー: _metadata_technote.yml
+% 更新履歴:
+%   20250813:
+%     - titlesecパッケージの設定にParagraphのフォーマットを追加
+%     - インラインコードブロックの書式を変更
+%     - コードブロックの余白を調整し、改行に対応
+%     - 不要なプリアンブルを整理
+%     - 数式フォントを変更・調整
+%   20250810:
+%     - バージョン記録開始
+
+
+% === 必要なパッケージの読み込み ===
+
+\usepackage{array} % tabular環境を拡張、セルの幅を設定できる
+\usepackage{multirow} % 表のセルを縦方向に結合
+
+% SI準拠の単位表示
+\usepackage{siunitx}
+\sisetup{mode = match}  % モード（数式／本文）に合わせて、数字や単位の書式を切替
+
+\usepackage[dvipsnames]{xcolor}  % 色の設定
+\usepackage{here}  % {fig-pos="H"}で図をソースコードの位置に強制的に配置
+\usepackage{pdfpages}  % 外部で作成したPDF（図面、別章、付録など）をそのまま挿入
+\usepackage[hidelinks]{hyperref}  % PDFにハイパーリンク機能を追加
+
+% --- 未使用パッケージ ---
+% \renewcommand{\jsParagraphMark}{} %ltjsarticleを使う時用、段落見出しのマークを消す
+% \usepackage{tikz}  % LaTeXで図や図形を描くための描画パッケージ
+% \usepackage{luatexja-otf}  % LuaLaTeXで日本語を組版する際にOpenTypeフォントを直接利用できるようにする
+% \usepackage{unicode-math}
+% \usepackage{longtable}
+
+
+% === lualatex用のフォント設定 ===
+
+\usepackage[no-math]{fontspec}  % LuaLaTeXでOpenType/TrueTypeフォントを直接指定する、数式フォントの設定は無効化
+\usepackage{amsmath,amssymb}  % 数式で\align環境などを使えるようにする、追加の数学記号を使えるようにする
+\usepackage[noto-jp,deluxe,expert,bold]{luatexja-preset}  % 日本語フォントにプリセットを使う
+\ltjsetparameter{ jacharrange = {-2} }  % リテラルなギリシャ文字を欧文扱いする（ギリシャ文字に欧文フォントをそのまま使う）
+\setmainfont[Ligatures=TeX]{Noto Sans}  % 英数字メインフォントを設定
+\setsansfont[Ligatures=TeX]{Noto Sans}  % 英数字サンセリフフォントを設定
+\setmainjfont{Noto Sans JP}  % 日本語メインフォントを設定
+\setsansjfont{Noto Sans JP}  % 日本語サンセリフフォントを設定
+\setmathfont[Scale=1.0]{LeteSansMath}  % 数式用フォントを設定
+\setmonofont{PlemolJP}  % 英数字等角フォントを設定
+\setmonojfont{PlemolJP}  % 日本語等角フォントを設定
+
+% --- 未使用フォント ---
+% \setmathfont[Scale=1.0]{NewCMSansMath-Regular.otf}  % 数式用フォントを設定
+% \setmathfont[Scale=1.0]{texgyrepagella-math.otf}  % 数式用フォントを設定
+
+
+% === レイアウト調整 ===
+
+% --- ltjsbook用 ---
+% \usepackage{layout}
+% \setlength{\fullwidth}{\paperwidth-36mm}
+% \setlength{\textheight}{0.83\paperheight}
+% \addtolength\topmargin{-0.2in}
+% \setlength{\headsep}{30pt} % ヘッダーと本文の間隔を20ptに設定
+
+% --- bxjsbook用 ---
+\setlength{\fullwidth}{\paperwidth-36mm}
+\setlength{\textheight}{0.78\paperheight} % 本文部分の高さ
+\addtolength\topmargin{-0.2in}
+\setlength{\headsep}{30pt} % ヘッダーと本文の間隔を20ptに設定
+
+
+% === タイトルのフォーマット ===
+
+% プリアンブルで \maketitle を再定義
+\makeatletter
+\newcommand{\subtitle}[1]{\def\@subtitle{#1}}
+\newcommand{\@subtitle}{}  % 初期値は空
+\renewcommand{\maketitle}{
+  \begin{center}
+    {\bfseries\huge \@title \par}
+    \ifx\@subtitle\@empty  % サブタイトルが空なら何もしない
+    \else
+      {\normalsize \@subtitle \par}
+    \vskip 1em  % サブタイトルと著者の間の空白
+    {\large \@author \par}
+    \vskip 1em  % 著者と日付の間の空白
+    {\large \@date \par}
+  \end{center}
+  \vskip 2em  % 日付と本文の間の空白
+}
+\makeatother
+
+
+% === コードブロックのフォーマット ===
+
+% --- インラインコードブロック ---
+\definecolor{codebg}{RGB}{234,234,234}  % 明るいグレーの背景色
+\let\oldtexttt\texttt
+\renewcommand{\texttt}[1]{  % \textttの再定義
+  \colorbox{codebg}{  % 背景色
+    \textcolor{Maroon}{  % 文字色
+      \small  % 文字サイズ
+      \oldtexttt{#1}
+    }
+  }
+}
+
+% --- コードブロック ---
+\usepackage{fvextra}    % fancyvrbの拡張
+\setlength{\fboxrule}{6pt}  % 枠の太さを太くする
+\fvset{
+  bgcolor = codebg,
+  frame = single,
+  framesep = 0pt,        % 枠と内容の間の余白
+  rulecolor = \color{codebg},
+  fontsize = \small,
+  breaklines = true,
+  breakanywhere = true,  % 単語の途中でも改行する
+  commandchars = \\\{\},  % Pandocの構文ハイライトマクロに必要
+}
+\usepackage{framed} % <- Shaded は framed の shaded/snugshade を使う
+\definecolor{shadecolor}{RGB}{255,255,255} % 外枠の Shaded を白に
+
+
+% === Headerのフォーマット ===
+\usepackage{fancyhdr}
+\usepackage{lastpage}
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[RO,RE]{\normalfont \thepage /\pageref*{LastPage}} % ヘッダー右にページ番号
+% ヘッダー左に文書タイトル
+\let\origtitle\title 
+\renewcommand{\title}[1]{\lhead{\gt\sf\bfseries {#1}}\origtitle{#1}}
+
+
+% === Headingsのフォーマット ===
+\usepackage{titlesec}  % 見出しのフォーマット用パッケージ
+
+% --- Section ---
+\titleformat
+{\section} % command
+[block] % shape
+{\color{NavyBlue}\gt\sf\bfseries\Large} % format
+{
+  \definecolor{teal}{gray}{0.30}
+  \begin{picture}(-11,0)
+    % \put(-10,-5){
+    %   \begin{tikzpicture}
+    %     \fill[teal] (0pt,0pt) rectangle (5pt,19pt);
+    %   \end{tikzpicture}
+    % }
+    \put(-11,-5){
+      \color{NavyBlue}
+      \line(1,0){\hsize}
+    }
+  \end{picture}
+  \Large%
+  \hspace{-4pt}
+  \thesection .
+  \hspace{0pt}
+} % label
+{0pt} % sep
+{} % before-code
+% [] % after-code
+
+% --- Section (.unnumbered) ---
+\titleformat
+{name=\section,numberless} % command
+[block] % shape
+{\color{NavyBlue}\gt\sf\bfseries\Large} % format
+{} % label
+{0pt} % sep
+{
+  \definecolor{teal}{gray}{0.30}
+  \begin{picture}(-11,0)
+    % \put(-10,-5){
+    %   \begin{tikzpicture}
+    %     \fill[teal] (0pt,0pt) rectangle (5pt,19pt);
+    %   \end{tikzpicture}
+    % }
+    \put(-11,-5){
+      \color{NavyBlue}
+      \line(1,0){\hsize}
+    }
+  \end{picture}
+} % before-code
+% [] % after-code
+
+% --- Subsection ---
+\titleformat
+{\subsection} % command
+[block] % shape
+{\color{NavyBlue}\gt\sf\bfseries\large} % format
+{\thesubsection .} % label
+{8pt} % sep
+{} % before-code
+
+% --- Subsubsection ---
+\titleformat
+{\subsubsection} % command
+[block] % shape
+{\gt\sf\bfseries} % format
+{} % label
+{} % sep
+{} % before-code
+
+% --- Paragraph ---
+\titleformat
+{\paragraph} % command
+[runin] % shape
+{\normalsize\gt\sf\bfseries} % format
+{} % label
+{} % sep
+{} % befor-code
+% スペーシングの調整
+\titlespacing*{\paragraph}{0pt}{3.25ex plus 1ex minus .2ex}{1em}

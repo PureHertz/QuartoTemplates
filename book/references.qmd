@@ -1,0 +1,27 @@
+# 参考文献・資料 {.unnumbered}
+
+::: {#refs}
+:::
+
+{{< pagebreak >}}
+
+```{=latex}
+~
+\thispagestyle{empty}
+\begin{table}[b]
+\begin{center}
+\begin{tabular}{p{0.5\textwidth}r}
+\multicolumn{2}{l}{{\gt\sf\bfseries\Large {{< meta title >}}}} \\ 
+\multicolumn{2}{l}{\gt\sf\bfseries\normalsize {{< meta subtitle >}}} \\
+{{< meta date >}} 第{{< meta edition >}}版発行 & \\
+%& \\
+\hline
+\textbf{発行:} {{< meta publisher >}} & \\
+\textbf{著者:} {{< meta author >}} & \\
+%\textbf{組版:} Quarto & \\
+\hline
+\multicolumn{2}{l}{©{{< meta year >}} PureHertz}
+\end{tabular}
+\end{center}
+\end{table}
+```
