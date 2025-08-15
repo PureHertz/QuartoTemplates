@@ -8,22 +8,23 @@
 #     - date  # 不要
 #     - bibliography  # 参考文献がある場合
 # 更新履歴:
-#   20250814:
+#   20250815:
 #     - 最初のバージョン
 
 
-publisher: PureHertz
+title: Quarto Template
+subtitle: "技術書用"  # サブタイトルがない場合は半角スペースを入れる
+author: PureHertz
 date: today
-year: 2025
+
+publisher: PureHertz
+copy-right: 2025 PureHertz
 edition: 1
 
 project:
   type: book
 
 book:
-  title: Quarto Template
-  subtitle: "技術書用"  # サブタイトルがない場合は半角スペースを入れる
-  author: PureHertz
   output-file: quarto_template_book  # 出力ファイル名
   chapters:  # 各章のMarkdownファイル
     - index.qmd
