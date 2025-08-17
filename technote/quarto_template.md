@@ -8,6 +8,8 @@ bibliography: quarto_template_assets/references.bib  # bibtexファイル
 
 ## 更新履歴 {.unnumbered}
 
++ 20250815
+  - HTMLレンダリングを修正
 + 2025-08-14
   - 参考文献を設定
 + 2025-08-13
