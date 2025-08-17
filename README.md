@@ -1,4 +1,4 @@
-# Quarto Template
+# Quarto Templates
 
 Quartoを使って、できるだけプレーンに近いMarkdownファイルを使って、それなりの見た目の日本語PDFファイルを作るためのテンプレートです。Quartoについては、以下のリンクを参照してください。Quarto専用を含むMarkdownの表記方法も記載されています。
 
