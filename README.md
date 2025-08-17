@@ -1,24 +1,24 @@
 # Quarto Templates
 
-Quartoを使って、できるだけプレーンに近いMarkdownファイルを使って、それなりの見た目の日本語PDFファイルを作るためのテンプレートです。Quartoについては、以下のリンクを参照してください。Quarto専用を含むMarkdownの表記方法も記載されています。
+Quartoを使って、できるだけプレーンに近いMarkdownファイルからそれなりの見た目の日本語PDFを出力するためのテンプレートです。Quartoについては、以下のリンクを参照してください。Quarto専用を含むMarkdownの表記方法も記載されています。
 
 - https://quarto.org/
 
-Quartoの他に以下が必要です。フォントはStaticフォントをインストールしてください。Variableフォントだと失敗する可能性が高いです。
+Quartoの他に以下が必要です。フォントはStaticフォントをインストールしてください。VariableフォントだとLaTeXのレンダリングに失敗する可能性が高いです。
 
 - TinyTeX: Quartoインストール後に`quarto install tinytex`を実行してください。
 - サンセリフフォント
-  - Noto Sans
-  - Noto Sans JP
+  - [Noto Sans](https://fonts.google.com/noto/specimen/Noto+Sans)
+  - [Noto Sans JP](https://fonts.google.com/noto/specimen/Noto+Sans+JP)
 - セリフフォント
-  - Noto Serif (for book)
-  - Noto Serif JP (for book)
+  - [Noto Serif](https://fonts.google.com/noto/specimen/Noto+Serif) (for book)
+  - [Noto Serif JP](https://fonts.google.com/noto/specimen/Noto+Serif+JP) (for book)
 - 等角フォント
-  - PlemolJP
+  - [PlemolJP](https://github.com/yuru7/PlemolJP/releases/tag/v3.0.0)
 
 ## technote
 
-`/tecnote/`内は、`bxjsarticle`をもとにしたテクニカルノート用のテンプレートファイルセットです。Markdownファイル1つをPDF化します。
+`tecnote/`内は、`bxjsarticle`をもとにしたテクニカルノート用のテンプレートファイルセットです。Markdownファイル1つをPDF化します。
 
 ```
 quarto render <markdown file path> --to pdf
@@ -41,7 +41,7 @@ Markdownファイルを作成し、YAMLヘッダーでタイトルなどを指�
 
 ## book
 
-`/book/`内は`bxjsbook`をもとにした技術書用のテンプレートファイルセットです。Chapterごとに複数のMarkdownファイルを用意してまとめてPDF化します。
+`book/`内は`bxjsbook`をもとにした技術書用のテンプレートファイルセットです。Chapterごとに複数のMarkdownファイルを用意してまとめてPDF化します。
 
 ```
 quarto render
