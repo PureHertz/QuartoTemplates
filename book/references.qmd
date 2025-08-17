@@ -20,7 +20,7 @@
 \textbf{著者:} {{< meta author >}} & \\
 %\textbf{組版:} Quarto & \\
 \hline
-\multicolumn{2}{l}{©{{< meta year >}} PureHertz}
+\multicolumn{2}{l}{©{{< meta copy-right >}}}
 \end{tabular}
 \end{center}
 \end{table}

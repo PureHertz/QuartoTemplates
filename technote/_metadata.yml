@@ -30,7 +30,6 @@ format:
     theme: darkly
     toc-expand: true  # 目次を展開して表示
 
-
   pdf:
     pdf-engine: lualatex
     documentclass: bxjsarticle
