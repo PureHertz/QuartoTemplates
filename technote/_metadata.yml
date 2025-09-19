@@ -35,7 +35,7 @@ format:
   pdf:
     pdf-engine: lualatex
     documentclass: bxjsarticle
-    classoption: [lualatex, ja=standard, 11pt, a4paper]
+    classoption: [lualatex, ja=standard, 10pt, a4paper]
     # cite-method: biblatex
     pagestyle: headings   # フッターに何も表示せずに、ヘッダーにタイトルとページ番号を表示
     number-sections: true  # 見出しに番号を付ける

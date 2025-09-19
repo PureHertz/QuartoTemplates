@@ -109,6 +109,26 @@ $${#eq-xxx}
    2. Item 3-2
 
 
+## Description list
+
+PHP Markdown Extraの構文を使っています。定義はコロンまたはチルダで始まります。段落やその他のブロック要素の先頭以外では、インデントを省略できます。
+
+Term 1
+
+:   Definition 1
+
+Term 2 with *inline markup*
+
+:   Definition 2
+with lazy continuation.
+
+    - Item 1
+    - Item 2
+      - Item 2-1
+
+    Third paragraph of the definition 2.
+
+
 ## Code blocks
 
 `inline code block`

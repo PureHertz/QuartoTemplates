@@ -8,6 +8,8 @@ bibliography: quarto_template_assets/references.bib  # bibtexファイル
 
 ## 更新履歴 {.unnumbered}
 
++ 2025-09-03
+  - フォントサイズを11pt → 10ptに変更
 + 20250815
   - HTMLレンダリングを修正
 + 2025-08-14
@@ -107,6 +109,26 @@ $${#eq-xxx}
 3. Item 3
    1. Item 3-1
    2. Item 3-2
+
+
+## Description list
+
+PHP Markdown Extraの構文を使っています。定義はコロンまたはチルダで始まります。段落やその他のブロック要素の先頭以外では、インデントを省略できます。
+
+Term 1
+
+:   Definition 1
+
+Term 2 with *inline markup*
+
+:   Definition 2
+with lazy continuation.
+
+    - Item 1
+    - Item 2
+      - Item 2-1
+
+    Third paragraph of the definition 2.
 
 
 ## Code blocks

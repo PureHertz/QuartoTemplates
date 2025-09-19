@@ -1,0 +1,1020 @@
+% Options for packages loaded elsewhere
+% Options for packages loaded elsewhere
+\PassOptionsToPackage{unicode}{hyperref}
+\PassOptionsToPackage{hyphens}{url}
+\PassOptionsToPackage{dvipsnames,svgnames,x11names}{xcolor}
+%
+\documentclass[
+  japanese,
+  letterpaper,
+  lualatex,
+  ja=standard,
+  10pt,
+  a4paper,
+  textwidth-limit=50,
+  openany]{bxjsbook}
+\usepackage{xcolor}
+\usepackage{amsmath,amssymb}
+\setcounter{secnumdepth}{2}
+\usepackage{iftex}
+\ifPDFTeX
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{textcomp} % provide euro and other symbols
+\else % if luatex or xetex
+  \usepackage{unicode-math} % this also loads fontspec
+  \defaultfontfeatures{Scale=MatchLowercase}
+  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+\fi
+\usepackage{lmodern}
+\ifPDFTeX\else
+  % xetex/luatex font selection
+\fi
+% Use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\IfFileExists{microtype.sty}{% use microtype if available
+  \usepackage[]{microtype}
+  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\makeatletter
+\@ifundefined{KOMAClassName}{% if non-KOMA class
+  \IfFileExists{parskip.sty}{%
+    \usepackage{parskip}
+  }{% else
+    \setlength{\parindent}{0pt}
+    \setlength{\parskip}{6pt plus 2pt minus 1pt}}
+}{% if KOMA class
+  \KOMAoptions{parskip=half}}
+\makeatother
+% Make \paragraph and \subparagraph free-standing
+\makeatletter
+\ifx\paragraph\undefined\else
+  \let\oldparagraph\paragraph
+  \renewcommand{\paragraph}{
+    \@ifstar
+      \xxxParagraphStar
+      \xxxParagraphNoStar
+  }
+  \newcommand{\xxxParagraphStar}[1]{\oldparagraph*{#1}\mbox{}}
+  \newcommand{\xxxParagraphNoStar}[1]{\oldparagraph{#1}\mbox{}}
+\fi
+\ifx\subparagraph\undefined\else
+  \let\oldsubparagraph\subparagraph
+  \renewcommand{\subparagraph}{
+    \@ifstar
+      \xxxSubParagraphStar
+      \xxxSubParagraphNoStar
+  }
+  \newcommand{\xxxSubParagraphStar}[1]{\oldsubparagraph*{#1}\mbox{}}
+  \newcommand{\xxxSubParagraphNoStar}[1]{\oldsubparagraph{#1}\mbox{}}
+\fi
+\makeatother
+
+\usepackage{color}
+\usepackage{fancyvrb}
+\newcommand{\VerbBar}{|}
+\newcommand{\VERB}{\Verb[commandchars=\\\{\}]}
+\DefineVerbatimEnvironment{Highlighting}{Verbatim}{commandchars=\\\{\}}
+% Add ',fontsize=\small' for more characters per line
+\usepackage{framed}
+\definecolor{shadecolor}{RGB}{248,248,248}
+\newenvironment{Shaded}{\begin{snugshade}}{\end{snugshade}}
+\newcommand{\AlertTok}[1]{\textcolor[rgb]{0.94,0.16,0.16}{#1}}
+\newcommand{\AnnotationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\AttributeTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{#1}}
+\newcommand{\BaseNTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\BuiltInTok}[1]{#1}
+\newcommand{\CharTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\CommentTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
+\newcommand{\CommentVarTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\ConstantTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{#1}}
+\newcommand{\ControlFlowTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\DataTypeTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{#1}}
+\newcommand{\DecValTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\DocumentationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\ErrorTok}[1]{\textcolor[rgb]{0.64,0.00,0.00}{\textbf{#1}}}
+\newcommand{\ExtensionTok}[1]{#1}
+\newcommand{\FloatTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\FunctionTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\ImportTok}[1]{#1}
+\newcommand{\InformationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\KeywordTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\NormalTok}[1]{#1}
+\newcommand{\OperatorTok}[1]{\textcolor[rgb]{0.81,0.36,0.00}{\textbf{#1}}}
+\newcommand{\OtherTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{#1}}
+\newcommand{\PreprocessorTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
+\newcommand{\RegionMarkerTok}[1]{#1}
+\newcommand{\SpecialCharTok}[1]{\textcolor[rgb]{0.81,0.36,0.00}{\textbf{#1}}}
+\newcommand{\SpecialStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\StringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\VariableTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\VerbatimStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\WarningTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+
+\usepackage{longtable,booktabs,array}
+\usepackage{calc} % for calculating minipage widths
+% Correct order of tables after \paragraph or \subparagraph
+\usepackage{etoolbox}
+\makeatletter
+\patchcmd\longtable{\par}{\if@noskipsec\mbox{}\fi\par}{}{}
+\makeatother
+% Allow footnotes in longtable head/foot
+\IfFileExists{footnotehyper.sty}{\usepackage{footnotehyper}}{\usepackage{footnote}}
+\makesavenoteenv{longtable}
+\usepackage{graphicx}
+\makeatletter
+\newsavebox\pandoc@box
+\newcommand*\pandocbounded[1]{% scales image to fit in text height/width
+  \sbox\pandoc@box{#1}%
+  \Gscale@div\@tempa{\textheight}{\dimexpr\ht\pandoc@box+\dp\pandoc@box\relax}%
+  \Gscale@div\@tempb{\linewidth}{\wd\pandoc@box}%
+  \ifdim\@tempb\p@<\@tempa\p@\let\@tempa\@tempb\fi% select the smaller of both
+  \ifdim\@tempa\p@<\p@\scalebox{\@tempa}{\usebox\pandoc@box}%
+  \else\usebox{\pandoc@box}%
+  \fi%
+}
+% Set default figure placement to htbp
+\def\fps@figure{htbp}
+\makeatother
+
+
+% definitions for citeproc citations
+\NewDocumentCommand\citeproctext{}{}
+\NewDocumentCommand\citeproc{mm}{%
+  \begingroup\def\citeproctext{#2}\cite{#1}\endgroup}
+\makeatletter
+ % allow citations to break across lines
+ \let\@cite@ofmt\@firstofone
+ % avoid brackets around text for \cite:
+ \def\@biblabel#1{}
+ \def\@cite#1#2{{#1\if@tempswa , #2\fi}}
+\makeatother
+\newlength{\cslhangindent}
+\setlength{\cslhangindent}{1.5em}
+\newlength{\csllabelwidth}
+\setlength{\csllabelwidth}{3em}
+\newenvironment{CSLReferences}[2] % #1 hanging-indent, #2 entry-spacing
+ {\begin{list}{}{%
+  \setlength{\itemindent}{0pt}
+  \setlength{\leftmargin}{0pt}
+  \setlength{\parsep}{0pt}
+  % turn on hanging indent if param 1 is 1
+  \ifodd #1
+   \setlength{\leftmargin}{\cslhangindent}
+   \setlength{\itemindent}{-1\cslhangindent}
+  \fi
+  % set entry spacing
+  \setlength{\itemsep}{#2\baselineskip}}}
+ {\end{list}}
+\usepackage{calc}
+\newcommand{\CSLBlock}[1]{\hfill\break\parbox[t]{\linewidth}{\strut\ignorespaces#1\strut}}
+\newcommand{\CSLLeftMargin}[1]{\parbox[t]{\csllabelwidth}{\strut#1\strut}}
+\newcommand{\CSLRightInline}[1]{\parbox[t]{\linewidth - \csllabelwidth}{\strut#1\strut}}
+\newcommand{\CSLIndent}[1]{\hspace{\cslhangindent}#1}
+
+\ifLuaTeX
+\usepackage[bidi=basic,provide=*]{babel}
+\else
+\usepackage[bidi=default,provide=*]{babel}
+\fi
+% get rid of language-specific shorthands (see #6817):
+\let\LanguageShortHands\languageshorthands
+\def\languageshorthands#1{}
+
+\pagestyle{headings}
+
+\setlength{\emergencystretch}{3em} % prevent overfull lines
+
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+
+
+
+ 
+
+
+% Quarto技術書用LaTeXプリアンブル
+%
+% 備考:
+%   Markdownファイル用YAMLヘッダー: _quarto.yml
+% 更新履歴:
+%   20250903:
+%     - bxjsclsのレイアウトを調整
+%   20250829:
+%     - コードブロックのフォントサイズを\small → \footnotesizeに
+%   20250814:
+%     - タイトルのフォーマットをtitlingを使って変更
+%   20250813:
+%     - titlesecパッケージの設定にParagraphのフォーマットを追加
+%     - インラインコードブロックの書式を変更
+%     - コードブロックの余白を調整し、改行に対応
+%     - 不要なプリアンブルを整理
+%     - 数式フォントを変更・調整
+%   20250810:
+%     - バージョン記録開始
+
+
+% === 必要なパッケージの読み込み ===
+
+\usepackage{array} % tabular環境を拡張、セルの幅を設定できる
+\usepackage{multirow} % 表のセルを縦方向に結合
+
+% SI準拠の単位表示
+\usepackage{siunitx}
+\sisetup{mode = match}  % モード（数式／本文）に合わせて、数字や単位の書式を切替
+
+\usepackage[dvipsnames]{xcolor}  % 色の設定
+\usepackage{here}  % {fig-pos="H"}で図をソースコードの位置に強制的に配置
+\usepackage{pdfpages}  % 外部で作成したPDF（図面、別章、付録など）をそのまま挿入
+\usepackage[hidelinks]{hyperref}  % PDFにハイパーリンク機能を追加
+\usepackage{appendix}  % 付録の章番号を設定
+\usepackage{quotchap}
+
+% --- 未使用パッケージ ---
+% \renewcommand{\jsParagraphMark}{} %ltjsarticleを使う時用、段落見出しのマークを消す
+% \usepackage{tikz}  % LaTeXで図や図形を描くための描画パッケージ
+% \usepackage{luatexja-otf}  % LuaLaTeXで日本語を組版する際にOpenTypeフォントを直接利用できるようにする
+% \usepackage{unicode-math}
+% \usepackage{longtable}
+
+
+% === lualatex用のフォント設定 ===
+
+\usepackage[no-math]{fontspec}  % LuaLaTeXでOpenType/TrueTypeフォントを直接指定する、数式フォントの設定は無効化
+\usepackage{amsmath,amssymb}  % 数式で\align環境などを使えるようにする、追加の数学記号を使えるようにする
+\usepackage[noto-jp,deluxe,expert,bold]{luatexja-preset}  % 日本語フォントにプリセットを使う
+\ltjsetparameter{ jacharrange = {-2} }  % リテラルなギリシャ文字を欧文扱いする（ギリシャ文字に欧文フォントをそのまま使う）
+\setmainfont[Ligatures=TeX]{Noto Serif}  % 英数字メインフォントを設定
+\setsansfont[Ligatures=TeX]{Noto Sans}  % 英数字サンセリフフォントを設定
+\setmainjfont{Noto Serif JP}  % 日本語メインフォントを設定
+\setsansjfont{Noto Sans JP}  % 日本語サンセリフフォントを設定
+\setmathfont[Scale=1.0]{texgyrepagella-math.otf}  % 数式用フォントを設定
+\setmonofont{PlemolJP}  % 英数字等角フォントを設定
+\setmonojfont{PlemolJP}  % 日本語等角フォントを設定
+
+% --- 未使用フォント ---
+% \setmathfont[Scale=1.0]{NewCMSansMath-Regular.otf}  % 数式用フォントを設定
+% \setmathfont[Scale=1.0]{LeteSansMath}  % 数式用フォントを設定
+
+
+% === レイアウト調整 ===
+
+% --- ltjscls用 ---
+% \usepackage{layout}
+% \setlength{\fullwidth}{\paperwidth-36mm}
+% \setlength{\textheight}{0.83\paperheight}
+% \addtolength\topmargin{-0.2in}
+% \setlength{\headsep}{30pt} % ヘッダーと本文の間隔を20ptに設定
+
+% --- bxjscls用 ---
+\setlength{\fullwidth}{\paperwidth-36mm}
+\setpagelayout{hmargin=26mm}
+% \setlength{\evensidemargin}{-5mm}
+\setlength{\textheight}{0.78\paperheight} % 本文部分の高さ
+\addtolength\topmargin{-0.2in}
+\setlength{\headsep}{30pt} % ヘッダーと本文の間隔を20ptに設定
+
+
+% \usepackage{graphicx}
+% \usepackage{pxjahyper}
+\usepackage{titlesec}
+\usepackage{tikz}
+
+
+% === タイトルのフォーマット ===
+
+\usepackage{titling}  % タイトルのフォーマットを変更するためのパッケージ
+\makeatletter
+\newcommand{\subtitle}[1]{\def\@subtitle{#1}}
+\newcommand{\@subtitle}{}  % 初期値は空
+\pretitle{\begin{center}\gt\sf\bfseries\huge}
+\posttitle{
+  \par\end{center}
+  \ifx\@subtitle\@empty
+  \else{
+    \begin{center}\gt\sf\large\@subtitle\par\end{center}
+  }
+  \vskip 2em  % タイトルの後に空白を追加
+}
+\preauthor{\begin{center}\gt\sf\large}
+\postauthor{\par\end{center}\vskip 1em}  % 著者の後に空白を追加
+\predate{\begin{center}\gt\sf\large}
+\postdate{\par\end{center}}
+\makeatother
+
+
+% === コードブロックのフォーマット ===
+
+% --- インラインコードブロック ---
+\definecolor{codebg}{RGB}{234,234,234}  % 明るいグレーの背景色
+\let\oldtexttt\texttt
+\renewcommand{\texttt}[1]{  % \textttの再定義
+  \colorbox{codebg}{  % 背景色
+    \textcolor{Maroon}{  % 文字色
+      \small  % 文字サイズ
+      \oldtexttt{#1}
+    }
+  }
+}
+
+% --- コードブロック ---
+\usepackage{fvextra}    % fancyvrbの拡張
+\setlength{\fboxrule}{6pt}  % 枠の太さを太くする
+\fvset{
+  bgcolor = codebg,
+  frame = single,
+  framesep = 0pt,        % 枠と内容の間の余白
+  rulecolor = \color{codebg},
+  fontsize = \footnotesize,
+  breaklines = true,
+  breakanywhere = true,  % 単語の途中でも改行する
+  commandchars = \\\{\},  % Pandocの構文ハイライトマクロに必要
+}
+\usepackage{framed} % <- Shaded は framed の shaded/snugshade を使う
+\definecolor{shadecolor}{RGB}{255,255,255} % 外枠の Shaded を白に
+
+
+% === Headingsのフォーマット ===
+
+% --- Chapter ---
+% \titleformat{\chapter}[display]{\gtfamily\huge\bfseries}{\sf \chaptertitlename\ \thechapter}{20pt}{\Huge}
+\titleformat
+{\chapter} % command
+[display] % shape
+{\color{NavyBlue}\gt\sf\bfseries} % format
+{%
+\titlerule[3pt]%
+\huge 第\thechapter 章%
+} % label
+{-10pt} % sep
+{\huge} % before-code
+[{\titlerule[3pt]}] % after-code
+
+\titlespacing*{\chapter}{0pt}{0pt}{40pt}
+
+% --- Section ---
+\titleformat
+{\section} % command
+[block] % shape
+{\color{NavyBlue}\gt\sf\bfseries\Large} % format
+{
+  \definecolor{teal}{gray}{0.30}
+  \begin{picture}(-11,0)
+    % \put(-10,-5){
+    %   \begin{tikzpicture}
+    %     \fill[teal] (0pt,0pt) rectangle (5pt,19pt);
+    %   \end{tikzpicture}
+    % }
+    \put(-11,-5){
+      \color{NavyBlue}
+      \line(1,0){\hsize}
+    }
+  \end{picture}
+  \Large%
+  \hspace{-4pt}
+  \thesection .
+  \hspace{0pt}
+} % label
+{0pt} % sep
+{} % before-code
+% [] % after-code
+
+% --- Section (.unnumbered) ---
+\titleformat
+{name=\section,numberless} % command
+[block] % shape
+{\color{NavyBlue}\gt\sf\bfseries\Large} % format
+{} % label
+{0pt} % sep
+{
+  \definecolor{teal}{gray}{0.30}
+  \begin{picture}(-11,0)
+    % \put(-10,-5){
+    %   \begin{tikzpicture}
+    %     \fill[teal] (0pt,0pt) rectangle (5pt,19pt);
+    %   \end{tikzpicture}
+    % }
+    \put(-11,-5){
+      \color{NavyBlue}
+      \line(1,0){\hsize}
+    }
+  \end{picture}
+} % before-code
+% [] % after-code
+
+% --- Subsection ---
+\titleformat
+{\subsection} % command
+[block] % shape
+{\color{NavyBlue}\gt\sf\bfseries\large} % format
+{\thesubsection .} % label
+{8pt} % sep
+{} % before-code
+
+% --- Subsubsection ---
+\titleformat
+{\subsubsection} % command
+[block] % shape
+{\gt\sf\bfseries} % format
+{} % label
+{} % sep
+{} % before-code
+
+% --- Paragraph ---
+\titleformat
+{\paragraph} % command
+[runin] % shape
+{\normalsize\gt\sf\bfseries} % format
+{} % label
+{} % sep
+{} % befor-code
+% スペーシングの調整
+\titlespacing*{\paragraph}{0pt}{3.25ex plus 1ex minus .2ex}{1em}
+\makeatletter
+\@ifpackageloaded{bookmark}{}{\usepackage{bookmark}}
+\makeatother
+\makeatletter
+\@ifpackageloaded{caption}{}{\usepackage{caption}}
+\AtBeginDocument{%
+\ifdefined\contentsname
+  \renewcommand*\contentsname{目次}
+\else
+  \newcommand\contentsname{目次}
+\fi
+\ifdefined\listfigurename
+  \renewcommand*\listfigurename{図一覧}
+\else
+  \newcommand\listfigurename{図一覧}
+\fi
+\ifdefined\listtablename
+  \renewcommand*\listtablename{表一覧}
+\else
+  \newcommand\listtablename{表一覧}
+\fi
+\ifdefined\figurename
+  \renewcommand*\figurename{図}
+\else
+  \newcommand\figurename{図}
+\fi
+\ifdefined\tablename
+  \renewcommand*\tablename{表}
+\else
+  \newcommand\tablename{表}
+\fi
+}
+\@ifpackageloaded{float}{}{\usepackage{float}}
+\floatstyle{ruled}
+\@ifundefined{c@chapter}{\newfloat{codelisting}{h}{lop}}{\newfloat{codelisting}{h}{lop}[chapter]}
+\floatname{codelisting}{コード}
+\newcommand*\listoflistings{\listof{codelisting}{コード一覧}}
+\makeatother
+\makeatletter
+\makeatother
+\makeatletter
+\@ifpackageloaded{caption}{}{\usepackage{caption}}
+\@ifpackageloaded{subcaption}{}{\usepackage{subcaption}}
+\makeatother
+\usepackage{bookmark}
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\urlstyle{same}
+\hypersetup{
+  pdftitle={Quarto Template},
+  pdfauthor={PureHertz},
+  pdflang={ja},
+  colorlinks=true,
+  linkcolor={blue},
+  filecolor={Maroon},
+  citecolor={Blue},
+  urlcolor={Blue},
+  pdfcreator={LaTeX via pandoc}}
+
+
+\title{Quarto Template}
+\usepackage{etoolbox}
+\makeatletter
+\providecommand{\subtitle}[1]{% add subtitle to \maketitle
+  \apptocmd{\@title}{\par {\large #1 \par}}{}{}
+}
+\makeatother
+\subtitle{技術書用}
+\author{PureHertz}
+\date{2025年9月4日}
+\begin{document}
+\maketitle
+
+\renewcommand*\contentsname{目次}
+{
+\hypersetup{linkcolor=}
+\setcounter{tocdepth}{1}
+\tableofcontents
+}
+
+\bookmarksetup{startatroot}
+
+\chapter*{はじめに}\label{ux306fux3058ux3081ux306b}
+\addcontentsline{toc}{chapter}{はじめに}
+
+\markboth{はじめに}{はじめに}
+
+はじめに
+
+\section*{更新履歴}\label{ux66f4ux65b0ux5c65ux6b74}
+\addcontentsline{toc}{section}{更新履歴}
+
+\markright{更新履歴}
+
+\begin{itemize}
+\tightlist
+\item
+  2025-08-14
+
+  \begin{itemize}
+  \tightlist
+  \item
+    ver. 1.0
+  \end{itemize}
+\end{itemize}
+
+\bookmarksetup{startatroot}
+
+\chapter{Quarto Template 1}\label{quarto-template-1}
+
+\section{このテンプレートについて}\label{ux3053ux306eux30c6ux30f3ux30d7ux30ecux30fcux30c8ux306bux3064ux3044ux3066}
+
+Quartoのテンプレートです。Quartoについては、以下のリンクを参照してください。Quarto専用を含むMarkdownの表記方法も記載されています。
+
+\begin{itemize}
+\tightlist
+\item
+  https://quarto.org/
+\end{itemize}
+
+Quartoの他に以下のものが必要です。
+
+\begin{itemize}
+\tightlist
+\item
+  TinyTeX:
+  Quartoインストール後に\texttt{quarto\ install\ tinytex}を実行してください。
+\item
+  サンセリフフォント
+
+  \begin{itemize}
+  \tightlist
+  \item
+    Noto Sans
+  \item
+    Noto Sans JP
+  \end{itemize}
+\item
+  セリフフォント
+
+  \begin{itemize}
+  \tightlist
+  \item
+    Noto Serif (for book)
+  \item
+    Noto Serif JP (for book)
+  \end{itemize}
+\item
+  等角フォント
+
+  \begin{itemize}
+  \tightlist
+  \item
+    PlemolJP
+  \end{itemize}
+\end{itemize}
+
+テンプレートのファイル構成は以下の通りです。
+
+\begin{itemize}
+\tightlist
+\item
+  \texttt{\_quarto.yml}: Quartoの設定ファイル
+\item
+  \texttt{\_preamble\_book.tex}: LaTeXのプリンブルファイル
+\item
+  \texttt{***.md}: 各章のMarkdownファイル
+\item
+  \texttt{***.qmd}: メインコンテンツ以外のMarkdownファイル
+\item
+  \texttt{***\_assets/}: 各章の画像やその他の素材を格納するフォルダ
+\item
+  \texttt{refs.bib}: 参考文献のBibTeXファイル
+\item
+  \texttt{the-optical-society.cls}: 参考文献のスタイルファイル
+\item
+  \texttt{\_book/}: 出力フォルダ
+\end{itemize}
+
+章ごとにMarkdownファイルを作成し、YAMLヘッダーで章のタイトルを指定します。テンプレートでは、\texttt{quarto\_template\_1.md}と\texttt{quarto\_template\_2.md}の2つの章を用意しています。imageファイルなどの素材は、各章ごとに\texttt{quarto\_template\_1\_assets}や\texttt{quarto\_template\_2\_assets}のようなフォルダを作成し、そこに配置して参照します。各章のMarkdownファイルと対応する素材フォルダを取り出せば、そのままtechnoteテンプレートでも使用できます。
+
+上記以外に、まえがき\texttt{index.qmd}とあとがき\texttt{postface.qmd}のMarkdownファイルも用意しています。\texttt{index.qmd}が無いと\texttt{quarto\ render}が通らないので注意してください。参考文献と奥付は\texttt{references.qmd}で自動生成します。参考文献を使用しない場合は、このファイルを編集して参考文献部分をコメントアウトしてください。
+
+全体の設定は\texttt{\_quarto.yml}で行います。必要箇所を変更して使用してください。
+
+\section{Section}\label{section}
+
+\texttt{\#\ xxx}は、Chapterに使うので、\texttt{\#\#\ xxx}をChapterのひとつ下のレベルの見出し（section）とします。technoteテンプレートと共通化するため、章のタイトルはYAMLヘッダーで指定することにします。
+
+\subsection{Subsection}\label{subsection}
+
+\subsubsection{Subsubsection}\label{subsubsection}
+
+Text
+
+\paragraph{Paragraph}\label{paragraph}
+
+Text
+
+\section{Tables}\label{tables}
+
+\begin{longtable}[]{@{}ll@{}}
+\caption{表の例}\label{tbl-xxx}\tabularnewline
+\toprule\noalign{}
+Header 1 & Header 2 \\
+\midrule\noalign{}
+\endfirsthead
+\toprule\noalign{}
+Header 1 & Header 2 \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+& \\
+& \\
+& \\
+\end{longtable}
+
+表~\ref{tbl-xxx} は表の例です。
+
+\section{Figures \& Links}\label{figures-links}
+
+\subsection{Figures}\label{figures}
+
+\begin{figure}[H]
+
+\centering{
+
+\includegraphics[width=1\linewidth,height=\textheight,keepaspectratio]{quarto_template_1_assets/image.png}
+
+}
+
+\caption{\label{fig-xxx}図の例}
+
+\end{figure}%
+
+図~\ref{fig-xxx} は図の例です。
+
+\subsection{Links}\label{links}
+
+\href{https://quarto.org}{Quarto}
+
+\section{Equations}\label{equations}
+
+\begin{equation}\phantomsection\label{eq-xxx}{
+  f(x) = ax^2 + bx + c
+}\end{equation}
+
+式(\ref{eq-xxx})は式の例です。本文中で参照した式番号に括弧は自動ではつかないので、手動でつけて下さい。インライン数式は\(f(x) = ax^2 + bx + c\)です。
+
+\section{List}\label{list}
+
+\begin{itemize}
+\tightlist
+\item
+  Item 1
+\item
+  Item 2
+\item
+  Item 3
+
+  \begin{itemize}
+  \tightlist
+  \item
+    Item 3-1
+  \item
+    Item 3-2
+  \end{itemize}
+\end{itemize}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  Item 1
+\item
+  Item 2
+\item
+  Item 3
+
+  \begin{enumerate}
+  \def\labelenumii{\arabic{enumii}.}
+  \tightlist
+  \item
+    Item 3-1
+  \item
+    Item 3-2
+  \end{enumerate}
+\end{enumerate}
+
+\section{Code blocks}\label{code-blocks}
+
+\texttt{inline\ code\ block}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Code block example}
+\BuiltInTok{print}\NormalTok{(}\StringTok{"Hello, World!"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\section{Citations}\label{citations}
+
+~{[}\citeproc{ref-Hall2006}{1}{]} は引用の例です。
+
+\section{Footnotes}\label{footnotes}
+
+Here is a footnote reference,\footnote{Here is the footnote.} and
+another.\footnote{Here's one with multiple blocks.}
+
+Here is an inline note.\footnote{Inlines notes are easier to write,
+  since you don't have to pick an identifier and move down to type the
+  note.}
+
+\section{Page break}\label{page-break}
+
+どうしてもレイアウト調整が必要な時に使います。
+
+\bookmarksetup{startatroot}
+
+\chapter{Quarto Template 2}\label{quarto-template-2}
+
+\section{このテンプレートについて}\label{ux3053ux306eux30c6ux30f3ux30d7ux30ecux30fcux30c8ux306bux3064ux3044ux3066-1}
+
+Quartoのテンプレートです。Quartoについては、以下のリンクを参照してください。Quarto専用を含むMarkdownの表記方法も記載されています。
+
+\begin{itemize}
+\tightlist
+\item
+  https://quarto.org/
+\end{itemize}
+
+Quartoの他に以下のものが必要です。
+
+\begin{itemize}
+\tightlist
+\item
+  TinyTeX:
+  Quartoインストール後に\texttt{quarto\ install\ tinytex}を実行してください。
+\item
+  サンセリフフォント
+
+  \begin{itemize}
+  \tightlist
+  \item
+    Noto Sans
+  \item
+    Noto Sans JP
+  \end{itemize}
+\item
+  セリフフォント
+
+  \begin{itemize}
+  \tightlist
+  \item
+    Noto Serif (for book)
+  \item
+    Noto Serif JP (for book)
+  \end{itemize}
+\item
+  等角フォント
+
+  \begin{itemize}
+  \tightlist
+  \item
+    PlemolJP
+  \end{itemize}
+\end{itemize}
+
+テンプレートのファイル構成は以下の通りです。
+
+\begin{itemize}
+\tightlist
+\item
+  \texttt{\_quarto.yml}: Quartoの設定ファイル
+\item
+  \texttt{\_preamble\_book.tex}: LaTeXのプリンブルファイル
+\item
+  \texttt{***.md}: 各章のMarkdownファイル
+\item
+  \texttt{***.qmd}: メインコンテンツ以外のMarkdownファイル
+\item
+  \texttt{***\_assets/}: 各章の画像やその他の素材を格納するフォルダ
+\item
+  \texttt{refs.bib}: 参考文献のBibTeXファイル
+\item
+  \texttt{the-optical-society.cls}: 参考文献のスタイルファイル
+\item
+  \texttt{\_book/}: 出力フォルダ
+\end{itemize}
+
+章ごとにMarkdownファイルを作成し、YAMLヘッダーで章のタイトルを指定します。テンプレートでは、\texttt{quarto\_template\_1.md}と\texttt{quarto\_template\_2.md}の2つの章を用意しています。imageファイルなどの素材は、各章ごとに\texttt{quarto\_template\_1\_assets}や\texttt{quarto\_template\_2\_assets}のようなフォルダを作成し、そこに配置して参照します。各章のMarkdownファイルと対応する素材フォルダを取り出せば、そのままtechnoteテンプレートでも使用できます。
+
+上記以外に、まえがき\texttt{index.qmd}とあとがき\texttt{postface.qmd}のMarkdownファイルも用意しています。\texttt{index.qmd}が無いと\texttt{quarto\ render}が通らないので注意してください。参考文献と奥付は\texttt{references.qmd}で自動生成します。参考文献を使用しない場合は、このファイルを編集して参考文献部分をコメントアウトしてください。
+
+全体の設定は\texttt{\_quarto.yml}で行います。必要箇所を変更して使用してください。
+
+\section{Section}\label{section-1}
+
+\texttt{\#\ xxx}は、Chapterに使うので、\texttt{\#\#\ xxx}をChapterのひとつ下のレベルの見出し（section）とします。technoteテンプレートと共通化するため、章のタイトルはYAMLヘッダーで指定することにします。
+
+\subsection{Subsection}\label{subsection-1}
+
+\subsubsection{Subsubsection}\label{subsubsection-1}
+
+Text
+
+\paragraph{Paragraph}\label{paragraph-1}
+
+Text
+
+\section{Tables}\label{tables-1}
+
+\begin{longtable}[]{@{}ll@{}}
+\caption{表の例}\label{tbl-yyy}\tabularnewline
+\toprule\noalign{}
+Header 1 & Header 2 \\
+\midrule\noalign{}
+\endfirsthead
+\toprule\noalign{}
+Header 1 & Header 2 \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+& \\
+& \\
+& \\
+\end{longtable}
+
+表~\ref{tbl-yyy} は表の例です。
+
+\section{Figures \& Links}\label{figures-links-1}
+
+\subsection{Figures}\label{figures-1}
+
+\begin{figure}[H]
+
+\centering{
+
+\includegraphics[width=1\linewidth,height=\textheight,keepaspectratio]{quarto_template_2_assets/image.png}
+
+}
+
+\caption{\label{fig-yyy}図の例}
+
+\end{figure}%
+
+図~\ref{fig-yyy} は図の例です。
+
+\subsection{Links}\label{links-1}
+
+\href{https://quarto.org}{Quarto}
+
+\section{Equations}\label{equations-1}
+
+\begin{equation}\phantomsection\label{eq-xxx}{
+  f(x) = ax^2 + bx + c
+}\end{equation}
+
+式(\ref{eq-xxx})は式の例です。本文中で参照した式番号に括弧は自動ではつかないので、手動でつけて下さい。インライン数式は\(f(x) = ax^2 + bx + c\)です。
+
+\section{List}\label{list-1}
+
+\begin{itemize}
+\tightlist
+\item
+  Item 1
+\item
+  Item 2
+\item
+  Item 3
+
+  \begin{itemize}
+  \tightlist
+  \item
+    Item 3-1
+  \item
+    Item 3-2
+  \end{itemize}
+\end{itemize}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  Item 1
+\item
+  Item 2
+\item
+  Item 3
+
+  \begin{enumerate}
+  \def\labelenumii{\arabic{enumii}.}
+  \tightlist
+  \item
+    Item 3-1
+  \item
+    Item 3-2
+  \end{enumerate}
+\end{enumerate}
+
+\section{Code blocks}\label{code-blocks-1}
+
+\texttt{inline\ code\ block}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Code block example}
+\BuiltInTok{print}\NormalTok{(}\StringTok{"Hello, World!"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\section{Citations}\label{citations-1}
+
+~{[}\citeproc{ref-Hansch2006}{2}{]} は引用の例です。
+
+\section{Footnotes}\label{footnotes-1}
+
+Here is a footnote reference,\footnote{Here is the footnote.} and
+another.\footnote{Here's one with multiple blocks.}
+
+Here is an inline note.\footnote{Inlines notes are easier to write,
+  since you don't have to pick an identifier and move down to type the
+  note.}
+
+\section{Page break}\label{page-break-1}
+
+どうしてもレイアウト調整が必要な時に使います。
+
+\bookmarksetup{startatroot}
+
+\chapter*{あとがき}\label{ux3042ux3068ux304cux304d}
+\addcontentsline{toc}{chapter}{あとがき}
+
+\markboth{あとがき}{あとがき}
+
+あとがき
+
+\bookmarksetup{startatroot}
+
+\chapter*{参考文献・資料}\label{ux53c2ux8003ux6587ux732eux8cc7ux6599}
+\addcontentsline{toc}{chapter}{参考文献・資料}
+
+\markboth{参考文献・資料}{参考文献・資料}
+
+\phantomsection\label{refs}
+\begin{CSLReferences}{0}{0}
+\bibitem[\citeproctext]{ref-Hall2006}
+\CSLLeftMargin{{[}1{]} }%
+\CSLRightInline{J. L. Hall,
+"\href{https://doi.org/10.1103/RevModPhys.78.1279}{Nobel Lecture:
+Defining and measuring optical frequencies}," Rev. Mod. Phys.
+\textbf{78}, 1279--1295 (2006).}
+
+\bibitem[\citeproctext]{ref-Hansch2006}
+\CSLLeftMargin{{[}2{]} }%
+\CSLRightInline{T. W. Hänsch,
+"\href{https://doi.org/10.1103/RevModPhys.78.1297}{Nobel Lecture:
+Passion for precision}," Rev. Mod. Phys. \textbf{78}, 1297--1309
+(2006).}
+
+\end{CSLReferences}
+
+\newpage{}
+
+~
+\thispagestyle{empty}
+\begin{table}[b]
+\begin{center}
+\begin{tabular}{p{0.5\textwidth}r}
+\multicolumn{2}{l}{{\gt\sf\bfseries\Large Quarto Template}} \\ 
+\multicolumn{2}{l}{\gt\sf\bfseries\normalsize 技術書用} \\
+2025年9月4日 第1版発行 & \\
+%& \\
+\hline
+\textbf{発行:} PureHertz & \\
+\textbf{著者:} PureHertz & \\
+%\textbf{組版:} Quarto & \\
+\hline
+\multicolumn{2}{l}{©2025 PureHertz}
+\end{tabular}
+\end{center}
+\end{table}
+
+
+
+
+\end{document}

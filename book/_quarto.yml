@@ -8,6 +8,10 @@
 #     - date  # 不要
 #     - bibliography  # 参考文献がある場合
 # 更新履歴:
+#   20250903:
+#     - classをbxsjreportからbxjsbookに変更
+#     - openanyオプションを追加
+#     - textwidth-limitオプションを追加
 #   20250815:
 #     - 最初のバージョン
 
@@ -40,9 +44,8 @@ bibliography:  # bibtexファイル
 format:
   pdf:
     pdf-engine: lualatex
-    documentclass: bxjsreport
-    classoption: [lualatex, ja=standard, 10pt, a4paper]
-    # cite-method: biblatex
+    documentclass: bxjsbook
+    classoption: [lualatex, ja=standard, 10pt, a4paper, textwidth-limit=50, openany]
     pagestyle: headings
     number-sections: true  # 見出しに番号を付ける
     number-depth: 2  # subsectionまで見出し番号を付ける

@@ -3,6 +3,11 @@
 % 備考:
 %   Markdownファイル用YAMLヘッダー: _metadata_technote.yml
 % 更新履歴:
+%   20250903:
+%     - bxjsclsのレイアウトを調整
+%     - 説明リストの書式を設定
+%   20250829:
+%     - コードブロックのフォントサイズを\small → \footnotesizeに
 %   20250813:
 %     - titlesecパッケージの設定にParagraphのフォーマットを追加
 %     - インラインコードブロックの書式を変更
@@ -56,15 +61,16 @@
 
 % === レイアウト調整 ===
 
-% --- ltjsbook用 ---
+% --- ltjscls用 ---
 % \usepackage{layout}
 % \setlength{\fullwidth}{\paperwidth-36mm}
 % \setlength{\textheight}{0.83\paperheight}
 % \addtolength\topmargin{-0.2in}
 % \setlength{\headsep}{30pt} % ヘッダーと本文の間隔を20ptに設定
 
-% --- bxjsbook用 ---
+% --- bxjscls用 ---
 \setlength{\fullwidth}{\paperwidth-36mm}
+\setpagelayout{hmargin=26mm}
 \setlength{\textheight}{0.78\paperheight} % 本文部分の高さ
 \addtolength\topmargin{-0.2in}
 \setlength{\headsep}{30pt} % ヘッダーと本文の間隔を20ptに設定
@@ -92,6 +98,16 @@
 \makeatother
 
 
+% === 説明リストのフォーマット ===
+
+\usepackage{enumitem}
+\setlist[description]{%
+  font=\sffamily\bfseries,  % ラベルをサンセリフ体の太字に
+  style=nextline,           % ラベルの後に改行
+  leftmargin=1em            % 本文の左マージン
+}
+
+
 % === コードブロックのフォーマット ===
 
 % --- インラインコードブロック ---
@@ -114,7 +130,7 @@
   frame = single,
   framesep = 0pt,        % 枠と内容の間の余白
   rulecolor = \color{codebg},
-  fontsize = \small,
+  fontsize = \footnotesize,
   breaklines = true,
   breakanywhere = true,  % 単語の途中でも改行する
   commandchars = \\\{\},  % Pandocの構文ハイライトマクロに必要
