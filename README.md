@@ -68,6 +68,8 @@ quarto render
 
 ## UPDATE
 
+- 2025-09-30
+  - subsubsectionのフォント色をNavyBlueに変更
 - 2025-09-03
   - bookのレイアウト変更
   - 説明リストの書式を追加
