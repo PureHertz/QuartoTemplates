@@ -8,6 +8,8 @@ bibliography: quarto_template_assets/references.bib  # bibtexファイル
 
 ## 更新履歴 {.unnumbered}
 
++ 2025-10-13
+  - 参考文献の引用符の向きを修正
 + 2025-09-03
   - フォントサイズを11pt → 10ptに変更
 + 20250815
