@@ -3,6 +3,9 @@
 % 備考:
 %   Markdownファイル用YAMLヘッダー: _metadata_technote.yml
 % 更新履歴:
+%   20251212:
+%     - lete-sans-mathのフォント名エラーを修正
+%     - \maketitle内の\ifx閉じ忘れを修正
 %   20250930:
 %     - subsubsectionのフォント色をNavyBlueに変更
 %   20250903:
@@ -52,7 +55,7 @@
 \setsansfont[Ligatures=TeX]{Noto Sans}  % 英数字サンセリフフォントを設定
 \setmainjfont{Noto Sans JP}  % 日本語メインフォントを設定
 \setsansjfont{Noto Sans JP}  % 日本語サンセリフフォントを設定
-\setmathfont[Scale=1.0]{LeteSansMath}  % 数式用フォントを設定
+\setmathfont[Scale=1.0]{lete-sans-math}  % 数式用フォントを設定
 \setmonofont{PlemolJP}  % 英数字等角フォントを設定
 \setmonojfont{PlemolJP}  % 日本語等角フォントを設定
 
@@ -90,6 +93,7 @@
     \ifx\@subtitle\@empty  % サブタイトルが空なら何もしない
     \else
       {\normalsize \@subtitle \par}
+    \fi
     \vskip 1em  % サブタイトルと著者の間の空白
     {\large \@author \par}
     \vskip 1em  % 著者と日付の間の空白
