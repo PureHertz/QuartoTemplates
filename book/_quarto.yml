@@ -19,10 +19,10 @@
 title: Quarto Template
 subtitle: "技術書用"  # サブタイトルがない場合は半角スペースを入れる
 author: PureHertz
-date: today
+date: last-modified
 
 publisher: PureHertz
-copy-right: 2025 PureHertz
+copy-right: 2026 PureHertz
 edition: 1
 
 project:

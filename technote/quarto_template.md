@@ -2,12 +2,14 @@
 title: Quarto Template
 subtitle: テクニカルノート用
 author: PureHertz
-date: today
+date: last-modified
 bibliography: quarto_template_assets/references.bib  # bibtexファイル
 ---
 
 ## 更新履歴 {.unnumbered}
 
++ 2026-02-25
+  - Unicodeのマイナス記号が日本語処理されないように修正し、Tipsに単位記述法を追加
 + 2025-10-13
   - 参考文献の引用符の向きを修正
 + 2025-09-03
@@ -66,10 +68,10 @@ Text
 ## Tables
 
 | Header 1 | Header 2 |
-|----------|----------|
-|          |          |
-|          |          |
-|          |          |
+| -------- | -------- |
+| 1        | 1        |
+| 2        | 10       |
+| 3        | 100      |
 
 : 表の例 {#tbl-xxx}
 
@@ -171,6 +173,11 @@ type the note.]
 ## HTML
 
 HTMLへのレンダリングも可能です。プレビュー用なのでそれほど詳細な設定はしていません。
+
+
+## Tips
+
+- 数値と単位を書く際、マイナス記号 "−"（U+2212）と改行なしスペース " "（U+00A0）を使って、−5.17 kmのように書くことができます。PDF化する前のMarkdownのままでも、ビューワーなどでの可読性が上がります。キーボードでの入力方法はIMEの設定などで対応して下さい。最初からLaTeXでPDF化するつもりであれば、`\qty{-5.17}{km}`を使うとより汎用的です。仕上がりは "\qty{-5.17}{km}" で、数値と単位のスペースが若干狭くなっています。
 
 
 ## 参考文献・資料{.unnumbered}

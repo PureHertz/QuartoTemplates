@@ -3,6 +3,8 @@
 % 備考:
 %   Markdownファイル用YAMLヘッダー: _metadata_technote.yml
 % 更新履歴:
+%   20260225:
+%     - U+2212のマイナス記号を日本語処理されないように、\newunicodechar{−}{\textminus}を追加
 %   20251212:
 %     - lete-sans-mathのフォント名エラーを修正
 %     - \maketitle内の\ifx閉じ忘れを修正
@@ -50,6 +52,8 @@
 \usepackage[no-math]{fontspec}  % LuaLaTeXでOpenType/TrueTypeフォントを直接指定する、数式フォントの設定は無効化
 \usepackage{amsmath,amssymb}  % 数式で\align環境などを使えるようにする、追加の数学記号を使えるようにする
 \usepackage[noto-jp,deluxe,expert,bold]{luatexja-preset}  % 日本語フォントにプリセットを使う
+\usepackage{newunicodechar}  % UTF-8文字をLaTeX文字に変換できるようにする
+\newunicodechar{−}{\textminus}  % UTF-8のマイナス記号を日本語処理されないようにLaTeXのマイナス文字に変換
 \ltjsetparameter{ jacharrange = {-2} }  % リテラルなギリシャ文字を欧文扱いする（ギリシャ文字に欧文フォントをそのまま使う）
 \setmainfont[Ligatures=TeX]{Noto Sans}  % 英数字メインフォントを設定
 \setsansfont[Ligatures=TeX]{Noto Sans}  % 英数字サンセリフフォントを設定
